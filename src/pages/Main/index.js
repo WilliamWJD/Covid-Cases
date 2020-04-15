@@ -11,8 +11,7 @@ const Main = () => {
 
     async function loadPais() {
         const response = await api.get('/summary')
-        setData(response.data.Countries)
-        console.log(data)
+        setData(response.data)
     }
 
     useEffect(() => {
@@ -21,9 +20,9 @@ const Main = () => {
 
     return (
         <ScrollView style={styles.container}>
-            <Header />
+            <Header data={data}/>
             <Prevencoes />
-            <BoxWord />
+            <BoxWord data={data} />
         </ScrollView>
     )
 }

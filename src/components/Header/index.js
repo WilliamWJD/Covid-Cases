@@ -1,18 +1,47 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-
+import { useNavigation } from '@react-navigation/native'
 import ModalFilter from '../Modal'
 
-const Header = () => {
-    
+const Header = ({ data }) => {
+    const [modalVisible, setModalVisible] = useState(false);
+    const [filterValue, setFilterValue] = useState('')
+
+    const navigation = useNavigation()
+
+    function navigateToDetail(){
+        if(!filterValue){
+            Alert.alert('Atenção !','Selecione um pais para verificar os casos de covid-19 correspondente')
+        }else{
+            navigation.navigate('Detail')
+        }
+    }
+
+    function habilitaModal(){
+        setModalVisible(true)
+        console.log(modalVisible)
+    }
+
+    function desabilitaModal(){
+        setModalVisible(false)
+    }
 
     return (
         <View style={styles.container}>
+            <ModalFilter 
+                modalVisible={modalVisible}
+                onCancel={desabilitaModal}
+                data={data}
+            />
+
             <View style={styles.boxFilter}>
                 <Text style={styles.boxFilterTitle}>Covid-19</Text>
-                <TouchableOpacity style={styles.boxFilterButton}>
-                    <Text style={styles.boxFilterButtonText}>BR</Text>
+                <TouchableOpacity 
+                    style={styles.boxFilterButton}
+                    onPress={()=>{habilitaModal()}}
+                >
+                    <Text style={styles.boxFilterButtonText}>{filterValue}</Text>
                     <MaterialIcons name="arrow-drop-down" size={25}/>
                 </TouchableOpacity>
             </View>
@@ -20,7 +49,7 @@ const Header = () => {
                 <Text style={styles.boxInformationTitle}>Lorem ipson sit dolor ?</Text>
                 <Text style={styles.boxInformationDescription}>Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet </Text>
             </View>
-            <TouchableOpacity style={styles.filtrar}>
+            <TouchableOpacity style={styles.filtrar} onPress={()=>navigateToDetail()    }>
                 <Text style={styles.filtrarText}>Pesquisar</Text>
             </TouchableOpacity>
         </View>
