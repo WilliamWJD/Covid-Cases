@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Modal, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 
-const ModalFilter = ({ modalVisible, onCancel, data }) => {
+const ModalFilter = ({ modalVisible, onCancel, data, onChangePais }) => {
+
+    const onPaisPress = (item) =>{
+        onChangePais(item)
+        onClosePress()
+    }
+
+    const onClosePress = () => {
+        onCancel()
+    }
+
     return (
         <Modal
             animationType="slide"
@@ -13,14 +23,17 @@ const ModalFilter = ({ modalVisible, onCancel, data }) => {
                     data={data.Countries}
                     keyExtractor={item => item.Country}
                     renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.itemCountry}>
+                        <TouchableOpacity 
+                            style={styles.itemCountry}
+                            onPress={() => onPaisPress(item.CountryCode)}
+                        >
                             <Text style={styles.itemCountryText}>{item.Country}</Text>
                         </TouchableOpacity>
                     )}
                 />
                 <View style={styles.boxActions}>
                     <TouchableOpacity
-                        onPress={onCancel}
+                        onPress={onClosePress}
                         style={styles.buttonCancel}
                     >
                         <Text style={styles.buttonCancelText}>Cancelar</Text>

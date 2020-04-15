@@ -14,7 +14,10 @@ const Header = ({ data }) => {
         if(!filterValue){
             Alert.alert('Atenção !','Selecione um pais para verificar os casos de covid-19 correspondente')
         }else{
-            navigation.navigate('Detail')
+            navigation.navigate('Detail',{
+                data:data,
+                filter:filterValue
+            })
         }
     }
 
@@ -33,6 +36,7 @@ const Header = ({ data }) => {
                 modalVisible={modalVisible}
                 onCancel={desabilitaModal}
                 data={data}
+                onChangePais={setFilterValue}
             />
 
             <View style={styles.boxFilter}>
