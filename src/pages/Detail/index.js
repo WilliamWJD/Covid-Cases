@@ -2,44 +2,83 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, Alert } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 
-
 import HeaderDetail from './HeaderDetail'
+import DetailChart from './DetailChart'
 
 const Detail = () => {
     const [detail, setDetail] = useState([])
+    const [dataChart, setDataChart] = useState([])
 
     const route = useRoute()
 
     const data = route.params.data
     const filter = route.params.filter
 
-    async function filterCasesDetail(){
-        const detailFilter = await data.Countries.filter(item=>{
+    async function filterCasesDetail() {
+        const detailFilter = await data.Countries.filter(item => {
             return item.CountryCode === filter
         })
         setDetail(detailFilter[0])
     }
 
-    useEffect(() =>{
-        filterCasesDetail()
-    },[])
+    const dataChartCountry = [
+        {
+            title:'Confirmados',
+            value: detail.TotalConfirmed,
+            svg: {
+                fill: '#3498db',
+            }
+        },
+        {
+            title:'Mortes',
+            value: detail.TotalDeaths,
+            svg: {
+                fill: '#e74c3c',
+            }
+        },
+        {
+            title:'Recuperados',
+            value: detail.TotalRecovered,
+            svg: {
+                fill: '#27ae60',
+            }
+        },
+        {
+            title:'Novas Mortes',
+            value: detail.NewDeaths,
+            svg: {
+                fill: '#e67e22',
+            }
+        },
+        {
+            title:'Novos Confirm',
+            value: detail.NewConfirmed,
+            svg: {
+                fill: '#8e44ad',
+            }
+        }
+    ]
 
-    return(
+    useEffect(() => {
+        filterCasesDetail()
+    }, [])
+
+
+    return (
         <View style={styles.container}>
-            <HeaderDetail 
+            <HeaderDetail
                 detail={detail}
             />
-            {/* <Text>{detail.Slug}</Text>
-            <Text>{detail.TotalConfirmed}</Text>
-            <Text>{detail.TotalDeaths}</Text>
-            <Text>{detail.TotalRecovered}</Text> */}
+            <DetailChart
+                data={dataChartCountry}
+            />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
     }
 })
 
