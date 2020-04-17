@@ -19,22 +19,34 @@ const HeaderDetail = ({ detail }) => {
                 <Text style={styles.country}>{detail.Country}</Text>
             </View>
             <View style={styles.boxDescriptionTitle}>
-                <MaterialIcons name="insert-chart" size={20} color="#fff"/>
+                <MaterialIcons name="insert-chart" size={20} color="#fff" />
                 <Text style={styles.titleDetail}>Estatística</Text>
             </View>
 
             <View style={styles.boxEstatistics}>
                 <View style={[styles.boxConStatus, { backgroundColor: '#3498db' }]}>
                     <Text style={styles.boxConStatusTitle}>Confirmados</Text>
-                    <Text style={styles.boxConStatusValue}>{detail.TotalConfirmed}</Text>
+                    <Text style={styles.boxConStatusValue}>
+                        {
+                            Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(detail.TotalConfirmed)
+                        }
+                    </Text>
                 </View>
                 <View style={[styles.boxConStatus, { backgroundColor: '#e74c3c' }]}>
                     <Text style={styles.boxConStatusTitle}>Mortes</Text>
-                    <Text style={styles.boxConStatusValue}>{detail.TotalDeaths}</Text>
+                    <Text style={styles.boxConStatusValue}>
+                        {
+                            Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(detail.TotalDeaths)
+                        }
+                    </Text>
                 </View>
                 <View style={[styles.boxConStatus, { backgroundColor: '#2ecc71' }]}>
                     <Text style={styles.boxConStatusTitle}>Recuperados</Text>
-                    <Text style={styles.boxConStatusValue}>{detail.TotalRecovered}</Text>
+                    <Text style={styles.boxConStatusValue}>
+                        {
+                            Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(detail.TotalRecovered)
+                        }
+                    </Text>
                 </View>
             </View>
 
@@ -55,10 +67,10 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 
-    boxDescriptionTitle:{
-        flexDirection:'row',
-        alignItems:'center',
-        marginLeft:5
+    boxDescriptionTitle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 5
     },
 
     country: {

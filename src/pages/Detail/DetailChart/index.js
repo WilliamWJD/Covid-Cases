@@ -8,7 +8,7 @@ const DetailChart = ({data}) => {
         <View style={styles.container}>
             <View style={styles.boxLegend}>
                 {data.map(item => (
-                    <View style={styles.boxLegendItem}>
+                    <View style={styles.boxLegendItem} key={item.title}>
                         <MaterialIcons name="lens" color={item.svg.fill} size={17}/>
                         <Text>{item.title}</Text>
                     </View>
@@ -30,7 +30,10 @@ const DetailChart = ({data}) => {
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection:'row'
+        flexDirection:'row',
+        backgroundColor:'#ecf0f1',
+        marginTop:-26,
+        borderRadius:30
     },
 
     boxLegend:{

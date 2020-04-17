@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, Text } from 'react-native'
 
 import api from '../../services/api'
 import Header from '../../components/Header'
@@ -7,22 +7,23 @@ import Prevencoes from '../../components/Prevencoes'
 import BoxWord from '../../components/BoxWord'
 
 const Main = () => {
-    const [data, setData] = useState([])
+    const [cases, setCases] = useState([])
 
     async function loadPais() {
         const response = await api.get('/summary')
-        setData(response.data)
+        setCases(response.data)
     }
 
     useEffect(() => {
         loadPais()
+        console.log(cases)
     }, [])
 
     return (
         <ScrollView style={styles.container}>
-            <Header data={data}/>
+            <Header data={cases} />
             <Prevencoes />
-            <BoxWord data={data} />
+            <BoxWord data={cases} />
         </ScrollView>
     )
 }

@@ -50,8 +50,10 @@ const Header = ({ data }) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.boxInformation}>
-                <Text style={styles.boxInformationTitle}>Lorem ipson sit dolor ?</Text>
-                <Text style={styles.boxInformationDescription}>Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet Lorem ipson sit dolor amet </Text>
+                <Text style={styles.boxInformationTitle}>O que é o Coronavírus?</Text>
+                <Text style={styles.boxInformationDescription}>
+                    O coronavírus, causador da pandemia global, pertence a uma família de vírus (CoV) que já circula no Brasil. Os vírus dessa família podem causar desde resfriados comuns a doenças mais graves.
+                </Text>
             </View>
             <TouchableOpacity style={styles.filtrar} onPress={()=>navigateToDetail()    }>
                 <Text style={styles.filtrarText}>Pesquisar</Text>
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
-        marginTop: 15,
+        marginTop: 8,
         alignSelf: 'flex-end',
         marginRight: 20
     },

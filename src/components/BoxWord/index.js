@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -11,10 +11,10 @@ const BoxWord = ({ data }) => {
             <LinearGradient colors={['#6057c1', '#473f97']} style={styles.boxWordCases}>
                 <Image source={CovidImage} style={{ width: 80, height: 80 }} />
                 <View style={styles.boxWordCasesInformations}>
-                    <Text style={styles.boxWordCasesInformationsTitle}> Casos de covid-19 no mundo </Text>
-                    {/* <Text style={styles.boxWordCasesInformationsValue}>Casos confirmados: {data['Global'].TotalConfirmed}</Text>
-                    <Text style={styles.boxWordCasesInformationsValue}>Total de mortes: {data['Global'].TotalDeaths}</Text>
-                    <Text style={styles.boxWordCasesInformationsValue}>Total de recuperados: {data['Global'].TotalRecovered}</Text> */}
+                    {/* <Text style={styles.boxWordCasesInformationsTitle}> Casos de covid-19 no mundo </Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>Casos confirmados: {data.Global.TotalConfirmed}</Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>Total de mortes: {data.Global.TotalDeaths}</Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>Total de recuperados: {data.Global.TotalRecovered}</Text> */}
                 </View>
             </LinearGradient>
         </View>
