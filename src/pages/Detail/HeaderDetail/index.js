@@ -56,7 +56,6 @@ const HeaderDetail = ({ detail }) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 25,
         height: 330,
         backgroundColor: '#473F97',
     },

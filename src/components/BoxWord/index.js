@@ -11,10 +11,23 @@ const BoxWord = ({ data }) => {
             <LinearGradient colors={['#6057c1', '#473f97']} style={styles.boxWordCases}>
                 <Image source={CovidImage} style={{ width: 80, height: 80 }} />
                 <View style={styles.boxWordCasesInformations}>
-                    {/* <Text style={styles.boxWordCasesInformationsTitle}> Casos de covid-19 no mundo </Text>
-                    <Text style={styles.boxWordCasesInformationsValue}>Casos confirmados: {data.Global.TotalConfirmed}</Text>
-                    <Text style={styles.boxWordCasesInformationsValue}>Total de mortes: {data.Global.TotalDeaths}</Text>
-                    <Text style={styles.boxWordCasesInformationsValue}>Total de recuperados: {data.Global.TotalRecovered}</Text> */}
+                    <Text style={styles.boxWordCasesInformationsTitle}> Casos de covid-19 no mundo </Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>                  
+                        {
+                            `Casos confirmados: ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.TotalConfirmed)}`
+                        }
+                    </Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>               
+                        {
+                            `Total de mortes: ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.TotalDeaths)}`
+                        }
+                    </Text>
+                    <Text style={styles.boxWordCasesInformationsValue}>
+                         
+                        {
+                            `Total de recuperados: ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.TotalRecovered)}`
+                        }
+                    </Text>
                 </View>
             </LinearGradient>
         </View>
@@ -38,7 +51,7 @@ const styles = StyleSheet.create({
     },
 
     boxWordCasesInformations: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     boxWordCasesInformationsTitle: {

@@ -20,7 +20,7 @@ const ModalFilter = ({ modalVisible, onCancel, data, onChangePais }) => {
         >
             <View style={styles.modalContainer}>
                 <FlatList
-                    data={data.Countries}
+                    data={data}
                     keyExtractor={item => item.Country}
                     renderItem={({ item }) => (
                         <TouchableOpacity 

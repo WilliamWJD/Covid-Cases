@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, Alert } from 'react-native'
+import { View, Text, StyleSheet, Alert, StatusBar } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 
 import HeaderDetail from './HeaderDetail'
@@ -15,7 +15,7 @@ const Detail = () => {
     const filter = route.params.filter
 
     async function filterCasesDetail() {
-        const detailFilter = await data.Countries.filter(item => {
+        const detailFilter = await data.filter(item => {
             return item.CountryCode === filter
         })
         setDetail(detailFilter[0])
@@ -66,6 +66,7 @@ const Detail = () => {
 
     return (
         <View style={styles.container}>
+            <StatusBar backgroundColor="#473F96" barStyle="light-content" />
             <HeaderDetail
                 detail={detail}
             />

@@ -10,18 +10,17 @@ const Main = () => {
     const [cases, setCases] = useState([])
 
     async function loadPais() {
-        const response = await api.get('/summary')
+        const response = await api.get('/world/total')
         setCases(response.data)
     }
 
     useEffect(() => {
         loadPais()
-        console.log(cases)
     }, [])
 
     return (
         <ScrollView style={styles.container}>
-            <Header data={cases} />
+            <Header />
             <Prevencoes />
             <BoxWord data={cases} />
         </ScrollView>
@@ -38,9 +37,9 @@ const styles = StyleSheet.create({
     },
 
     boxPrevencoesItem: {
-        width:50,
-        height:60,
-        backgroundColor:'red'
+        width: 50,
+        height: 60,
+        backgroundColor: 'red'
     }
 
 })

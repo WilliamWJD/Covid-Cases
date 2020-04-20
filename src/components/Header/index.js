@@ -1,12 +1,23 @@
-import React, {useState} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Alert, StatusBar } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import api from '../../services/api'
+
 import ModalFilter from '../Modal'
 
-const Header = ({ data }) => {
+const Header = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [filterValue, setFilterValue] = useState('')
+    const [countries, setCountries] = useState([])
+
+    useEffect(()=>{
+        async function loadCountries(){
+            const response = await api.get('/summary')
+            setCountries(response.data.Countries)
+        }
+        loadCountries()
+    },[])
 
     const navigation = useNavigation()
 
@@ -15,7 +26,7 @@ const Header = ({ data }) => {
             Alert.alert('Atenção !','Selecione um pais para verificar os casos de covid-19 correspondente')
         }else{
             navigation.navigate('Detail',{
-                data:data,
+                data:countries,
                 filter:filterValue
             })
         }
@@ -32,10 +43,11 @@ const Header = ({ data }) => {
 
     return (
         <View style={styles.container}>
+            <StatusBar backgroundColor="#473F96" barStyle="light-content" />
             <ModalFilter 
                 modalVisible={modalVisible}
                 onCancel={desabilitaModal}
-                data={data}
+                data={countries}
                 onChangePais={setFilterValue}
             />
 
@@ -64,7 +76,6 @@ const Header = ({ data }) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 25,
         backgroundColor: '#473F96',
         height: 240,
         borderBottomRightRadius: 40,
