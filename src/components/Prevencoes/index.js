@@ -35,7 +35,7 @@ const Prevecoes = () =>{
                             style={styles.boxPrevencoesImage}
                         />
                     </View>
-                    <Text style={styles.boxPrevencoesItemTitle}>Utilize alcool</Text>
+                    <Text style={styles.boxPrevencoesItemTitle}>Utilize álcool 70%</Text>
                 </View>
             </View>
         </View>
