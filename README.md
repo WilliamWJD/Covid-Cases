@@ -15,7 +15,6 @@ O Covid Cases é um projeto que foi desenvolvido com o objetivo de monitorar os 
 
 Tecnologias utilizadas no projeto:
 
-- [Node.js](https://nodejs.org/en/)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 
